@@ -1,41 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/15 17:27:02 by ting              #+#    #+#             */
-/*   Updated: 2023/09/15 20:41:56 by ting             ###   ########.fr       */
+/*   Created: 2023/09/11 18:10:00 by ting              #+#    #+#             */
+/*   Updated: 2023/09/15 20:46:27 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	char	*string;
-	char	cc;
-	int		i;
+	size_t	srclen;
+	size_t	i;
+	size_t	j;
 
-	string = (char *) s;
-	cc = (char) c;
-	i = ft_strlen(string);
-	while (i >= 0) 
+	srclen = ft_strlen(src);
+	i = 0;
+	j = 0;
+	while (i < size && dst[i] != '\0')
+		i++;
+	if (i == size)
+		return (i + srclen);
+	else
 	{
-		if (string[i] == cc)
-			return (&string[i]);
-		i--;
+		while (i + j + 1 < size && src[i] != '\0')
+		{
+			dst[i + j] = src[j];
+			j++;
+		}
+		if (i + j < size)
+			dst[i + j] = '\0';
 	}
-	return (NULL);
+	return (i + srclen);
 }
 /*
+#include <string.h>
 int	main(void)
 {
 	char	string[] = "hello";
-	int	c = 'w';
+	char	dest[] = "bye";
+	size_t	size = 10;
 
-	printf("ft_strrchr: %s\n", ft_strrchr(string, c));
-	printf("strrchr: %s\n", strrchr(string, c));
+	printf("%zu", ft_strlcat(dest, string, size));
 }
 */

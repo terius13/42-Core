@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/15 17:27:41 by ting              #+#    #+#             */
-/*   Updated: 2023/09/15 20:47:46 by ting             ###   ########.fr       */
+/*   Created: 2023/09/15 21:41:53 by ting              #+#    #+#             */
+/*   Updated: 2023/09/15 23:02:50 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	unsigned char	*string;
-	unsigned char	cc;
-	size_t			i;
+	int	length;
+	int	i;
 
-	string = (unsigned char *) s;
-	cc = (unsigned char) c;
+	length = ft_strlen(little);
 	i = 0;
-	while (i < n)
+	if (*little == '\0')
+		return ((char *) big);
+	while (big[i] != '\0' && i < len)
 	{
-		if (string[i] == cc)
-			return (&string[i]);
+		if (ft_strncmp(&big[i], little, length) == 0)
+			return ((char *) &big[i]);
 		i++;
 	}
 	return (NULL);
@@ -32,11 +32,10 @@ void	*ft_memchr(const void *s, int c, size_t n)
 /*
 int	main(void)
 {
-	char	string[] = "";
-	int	c = 0;
-	size_t	n = 3;
+	char	strbig[] = "Foo Bar Baz";
+	char	strlil[] = "Bar";
+	size_t	len = 10;
 
-	printf("ft_memchr:%p\n", ft_memchr(string, c, n));
-	printf("memchr:%p\n", memchr(string, c, n));
+	printf("ft_strnstr: %s", ft_strnstr(strbig, strlil, len));
 }
 */

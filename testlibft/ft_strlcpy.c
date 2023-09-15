@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/15 17:27:41 by ting              #+#    #+#             */
-/*   Updated: 2023/09/15 20:47:46 by ting             ###   ########.fr       */
+/*   Created: 2023/09/11 13:57:20 by ting              #+#    #+#             */
+/*   Updated: 2023/09/11 22:11:20 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	unsigned char	*string;
-	unsigned char	cc;
-	size_t			i;
+	size_t	i;
 
-	string = (unsigned char *) s;
-	cc = (unsigned char) c;
 	i = 0;
-	while (i < n)
+	while (i < size - 1 && src[i] != '\0')
 	{
-		if (string[i] == cc)
-			return (&string[i]);
+		dst[i] = src[i];
 		i++;
 	}
-	return (NULL);
+	dst[i] = '\0';
+	return (ft_strlen(src));
 }
 /*
 int	main(void)
 {
-	char	string[] = "";
-	int	c = 0;
-	size_t	n = 3;
+	const char	string[] = "hello";
+	char	dest[6];
+	size_t	size = 5;
 
-	printf("ft_memchr:%p\n", ft_memchr(string, c, n));
-	printf("memchr:%p\n", memchr(string, c, n));
+	printf("%zu", ft_strlcpy(dest, string, size));
+
+	return (0);
 }
 */
