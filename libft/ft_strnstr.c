@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 18:40:38 by ting              #+#    #+#             */
-/*   Updated: 2023/09/15 17:24:46 by ting             ###   ########.fr       */
+/*   Created: 2023/09/15 21:41:53 by ting              #+#    #+#             */
+/*   Updated: 2023/09/15 23:02:50 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	char	*string;
-	char	cc;
+	int	length;
+	int	i;
 
-	string = (char *) s;
-	cc = (char) c;
-	while (*string != cc)
+	length = ft_strlen(little);
+	i = 0;
+	if (*little == '\0')
+		return ((char *) big);
+	while (big[i] != '\0' && i < len)
 	{
-		if (*string == '\0')
-			return (NULL);
-		string++;
+		if (ft_strncmp(&big[i], little, length) == 0)
+			return ((char *) &big[i]);
+		i++;
 	}
-	return (string);
+	return (NULL);
 }
 /*
 int	main(void)
 {
-	char	string[] = "hello";
-	int	c = 'l';
+	char	strbig[] = "Foo Bar Baz";
+	char	strlil[] = "Bar";
+	size_t	len = 10;
 
-	printf("ft_strchr: %s\n", ft_strchr(string, c));
-	printf("strchr: %s", strchr(string, c));
+	printf("ft_strnstr: %s", ft_strnstr(strbig, strlil, len));
 }
 */

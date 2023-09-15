@@ -1,50 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 18:10:00 by ting              #+#    #+#             */
-/*   Updated: 2023/09/15 20:46:27 by ting             ###   ########.fr       */
+/*   Created: 2023/09/15 17:27:02 by ting              #+#    #+#             */
+/*   Updated: 2023/09/15 20:41:56 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+char	*ft_strrchr(const char *s, int c)
 {
-	size_t	srclen;
-	size_t	i;
-	size_t	j;
+	char	*string;
+	char	cc;
+	int		i;
 
-	srclen = ft_strlen(src);
-	i = 0;
-	j = 0;
-	while (i < size && dst[i] != '\0')
-		i++;
-	if (i == size)
-		return (i + srclen);
-	else
+	string = (char *) s;
+	cc = (char) c;
+	i = ft_strlen(string);
+	while (i >= 0) 
 	{
-		while (i + j + 1 < size && src[i] != '\0')
-		{
-			dst[i + j] = src[j];
-			j++;
-		}
-		if (i + j < size)
-			dst[i + j] = '\0';
+		if (string[i] == cc)
+			return (&string[i]);
+		i--;
 	}
-	return (i + srclen);
+	return (NULL);
 }
 /*
-#include <string.h>
 int	main(void)
 {
 	char	string[] = "hello";
-	char	dest[] = "bye";
-	size_t	size = 10;
+	int	c = 'w';
 
-	printf("%zu", ft_strlcat(dest, string, size));
+	printf("ft_strrchr: %s\n", ft_strrchr(string, c));
+	printf("strrchr: %s\n", strrchr(string, c));
 }
 */

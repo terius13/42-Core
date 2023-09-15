@@ -1,39 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 18:40:38 by ting              #+#    #+#             */
-/*   Updated: 2023/09/15 17:24:46 by ting             ###   ########.fr       */
+/*   Created: 2023/09/15 17:27:41 by ting              #+#    #+#             */
+/*   Updated: 2023/09/15 20:47:46 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	char	*string;
-	char	cc;
+	unsigned char	*string;
+	unsigned char	cc;
+	size_t			i;
 
-	string = (char *) s;
-	cc = (char) c;
-	while (*string != cc)
+	string = (unsigned char *) s;
+	cc = (unsigned char) c;
+	i = 0;
+	while (i < n)
 	{
-		if (*string == '\0')
-			return (NULL);
-		string++;
+		if (string[i] == cc)
+			return (&string[i]);
+		i++;
 	}
-	return (string);
+	return (NULL);
 }
 /*
 int	main(void)
 {
-	char	string[] = "hello";
-	int	c = 'l';
+	char	string[] = "";
+	int	c = 0;
+	size_t	n = 3;
 
-	printf("ft_strchr: %s\n", ft_strchr(string, c));
-	printf("strchr: %s", strchr(string, c));
+	printf("ft_memchr:%p\n", ft_memchr(string, c, n));
+	printf("memchr:%p\n", memchr(string, c, n));
 }
 */

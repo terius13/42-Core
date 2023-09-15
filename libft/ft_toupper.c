@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 18:40:38 by ting              #+#    #+#             */
-/*   Updated: 2023/09/15 17:24:46 by ting             ###   ########.fr       */
+/*   Created: 2023/09/12 18:14:56 by ting              #+#    #+#             */
+/*   Updated: 2023/09/12 18:15:50 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+int	ft_toupper(int c)
 {
-	char	*string;
-	char	cc;
-
-	string = (char *) s;
-	cc = (char) c;
-	while (*string != cc)
-	{
-		if (*string == '\0')
-			return (NULL);
-		string++;
-	}
-	return (string);
+	if (c >= 97 && c <= 122)
+		c = c - 32;
+	return (c);
 }
 /*
 int	main(void)
 {
-	char	string[] = "hello";
-	int	c = 'l';
-
-	printf("ft_strchr: %s\n", ft_strchr(string, c));
-	printf("strchr: %s", strchr(string, c));
+	printf("If the char is a, result:%c\n", ft_toupper('a'));
+	printf("If the char is z, result:%c\n", ft_toupper('z'));
+	printf("If the char is 4, result:%c\n", ft_toupper('4'));
 }
 */
