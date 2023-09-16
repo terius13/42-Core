@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/10 20:13:13 by ting              #+#    #+#             */
-/*   Updated: 2023/09/16 21:11:32 by ting             ###   ########.fr       */
+/*   Created: 2023/09/16 21:51:46 by ting              #+#    #+#             */
+/*   Updated: 2023/09/16 21:52:03 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	int				i;
-	unsigned char	*p;
+	void	*ptr;
 
-	p = (unsigned char *)s;
-	i = 0;
-	while (n > 0)
-	{
-		p[i] = (unsigned char)c;
-		n--;
-		i++;
-	}
-	return (s);
+	ptr = malloc(nmemb * size);
+	if (ptr == NULL)
+		return (NULL);
+	ft_bzero(ptr, nmemb * size);
+	return (ptr);
 }
 /*
 int	main(void)
 {
-	char	string[] = "Hello";
-	int	c = '/';
-	size_t n = 3;
+	size_t	nmemb = 7;
+	size_t	size = 5;
+	char	*s;
+	char	*t;
 
-	ft_memset(string, c, n);
-	printf("%s", string);
-}
-*/
+	s = ft_calloc(nmemb, size);
+	t = calloc(nmemb, size);
+	printf("mine: %s\n", s);
+	printf("clib: %s\n", t);
+	free(s);
+	free(t);
+	return (0);
+}*/

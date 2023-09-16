@@ -6,7 +6,7 @@
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 21:41:53 by ting              #+#    #+#             */
-/*   Updated: 2023/09/15 23:02:50 by ting             ###   ########.fr       */
+/*   Updated: 2023/09/16 21:40:31 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	int	length;
-	int	i;
+	size_t	i;
 
 	length = ft_strlen(little);
 	i = 0;
@@ -29,7 +29,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	}
 	return (NULL);
 }
-/*
+
 int	main(void)
 {
 	char	strbig[] = "Foo Bar Baz";
@@ -38,4 +38,4 @@ int	main(void)
 
 	printf("ft_strnstr: %s", ft_strnstr(strbig, strlil, len));
 }
-*/
+

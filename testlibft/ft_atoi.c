@@ -1,40 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/10 20:13:13 by ting              #+#    #+#             */
-/*   Updated: 2023/09/16 21:11:32 by ting             ###   ########.fr       */
+/*   Created: 2023/09/16 21:51:02 by ting              #+#    #+#             */
+/*   Updated: 2023/09/16 21:51:08 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+int	ft_atoi(const char *nptr)
 {
-	int				i;
-	unsigned char	*p;
+	int	neg;
+	int	i;
+	int	num;
 
-	p = (unsigned char *)s;
 	i = 0;
-	while (n > 0)
+	neg = 1;
+	num = 0;
+	while (nptr[i] == ' ')
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
 	{
-		p[i] = (unsigned char)c;
-		n--;
+		if (nptr[i] == '-')
+			neg = neg * -1;
 		i++;
 	}
-	return (s);
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		num = num * 10 + (nptr[i] - '0');
+		i++;
+	}
+	return (num * neg);
 }
 /*
 int	main(void)
 {
-	char	string[] = "Hello";
-	int	c = '/';
-	size_t n = 3;
+	char	nptr[] = "  -+ 123abc";
 
-	ft_memset(string, c, n);
-	printf("%s", string);
+	printf("ft_atoi: %i\n", ft_atoi(nptr));
+	printf("atoi: %i\n", atoi(nptr));
+	return (0);
 }
 */

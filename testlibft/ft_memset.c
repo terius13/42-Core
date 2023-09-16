@@ -6,7 +6,7 @@
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 20:13:13 by ting              #+#    #+#             */
-/*   Updated: 2023/09/11 13:28:27 by ting             ###   ########.fr       */
+/*   Updated: 2023/09/16 21:11:32 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	*ft_memset(void *s, int c, size_t n)
 	unsigned char	*p;
 
 	p = (unsigned char *)s;
+	i = 0;
 	while (n > 0)
 	{
 		p[i] = (unsigned char)c;

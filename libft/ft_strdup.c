@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/10 20:13:13 by ting              #+#    #+#             */
-/*   Updated: 2023/09/16 21:11:32 by ting             ###   ########.fr       */
+/*   Created: 2023/09/16 21:53:33 by ting              #+#    #+#             */
+/*   Updated: 2023/09/16 21:53:43 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+char	*ft_strdup(const char *s)
 {
-	int				i;
-	unsigned char	*p;
+	char	*ps;
 
-	p = (unsigned char *)s;
-	i = 0;
-	while (n > 0)
-	{
-		p[i] = (unsigned char)c;
-		n--;
-		i++;
-	}
-	return (s);
+	ps = (char *)malloc(ft_strlen(s) + 1);
+	if (ps == NULL)
+		return (NULL);
+	ft_strlcpy(ps, s, ft_strlen(s) + 1);
+	return (ps);
 }
 /*
 int	main(void)
 {
-	char	string[] = "Hello";
-	int	c = '/';
-	size_t n = 3;
+	char	s[] = "Hello";
+	char	t[] = "Nope";
+	char	*s_cpy;
+	char	*t_cpy;
 
-	ft_memset(string, c, n);
-	printf("%s", string);
-}
-*/
+	s_cpy = ft_strdup(s);
+	t_cpy = strdup(t);
+	printf("mine: %s\n", s_cpy);
+	free(s_cpy);
+	printf("clib: %s\n", t_cpy);
+	free(t_cpy);
+	return (0);
+}*/
