@@ -6,7 +6,7 @@
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 18:10:00 by ting              #+#    #+#             */
-/*   Updated: 2023/09/15 20:46:27 by ting             ###   ########.fr       */
+/*   Updated: 2023/09/17 13:26:19 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 		return (i + srclen);
 	else
 	{
-		while (i + j + 1 < size && src[i] != '\0')
+		while (i + j + 1 < size && src[j] != '\0')
 		{
 			dst[i + j] = src[j];
 			j++;

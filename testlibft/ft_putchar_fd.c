@@ -1,41 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 13:57:20 by ting              #+#    #+#             */
-/*   Updated: 2023/09/17 13:00:40 by ting             ###   ########.fr       */
+/*   Created: 2023/09/17 15:36:03 by ting              #+#    #+#             */
+/*   Updated: 2023/09/17 17:46:03 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+void	ft_putchar_fd(char c, int fd)
 {
-	size_t	i;
-
-	i = 0;
-	if (size == 0)
-		return (ft_strlen(src));
-	while (i < size - 1 && src[i] != '\0')
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (ft_strlen(src));
+       write (fd, &c, 1);
 }
 /*
 int	main(void)
 {
-	const char	string[] = "hello";
-	char	dest[6];
-	size_t	size = 0;
-
-	printf("%zu", ft_strlcpy(dest, string, size));
-
-	return (0);
+	ft_putchar_fd('c', 0);
 }
 */
