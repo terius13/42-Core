@@ -6,7 +6,7 @@
 #    By: ting <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/16 17:33:51 by ting              #+#    #+#              #
-#    Updated: 2023/09/16 21:36:29 by ting             ###   ########.fr        #
+#    Updated: 2023/09/18 22:26:44 by ting             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,9 @@ SRC = ft_atoi.c ft_isalpha.c \
       ft_strncmp.c ft_toupper.c \
       ft_isalnum.c ft_isprint.c \
       ft_memmove.c ft_strlcat.c \
-      ft_strnstr.c
+      ft_strnstr.c ft_putchar_fd.c \
+      ft_putstr_fd.c ft_putendl_fd.c\
+      ft_putnbr_fd.c ft_substr.c \
 
 CC = clang
 
