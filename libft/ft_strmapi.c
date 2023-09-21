@@ -1,41 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/15 17:27:02 by ting              #+#    #+#             */
-/*   Updated: 2023/09/21 19:34:26 by ting             ###   ########.fr       */
+/*   Created: 2023/09/20 19:30:45 by ting              #+#    #+#             */
+/*   Updated: 2023/09/21 19:32:35 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*string;
-	char	cc;
-	int		i;
+	unsigned int	i;
+	char			*str;
 
-	string = (char *) s;
-	cc = (char) c;
-	i = ft_strlen(string);
-	while (i >= 0)
+	i = 0;
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s)) + 1);
+	if (str == NULL)
+		return (NULL);
+	while (s[i] != '\0')
 	{
-		if (string[i] == cc)
-			return (&string[i]);
-		i--;
+		str[i] = f(i, s[i]);
+		i++;
 	}
-	return (NULL);
+	str[i] = '\0';
+	return (str);
 }
 /*
+char     ftoupper(unsigned int i, char c)
+{
+        if (c >= 97 && c <= 122)
+                c = c - 32;
+        return (c);
+}
 int	main(void)
 {
 	char	string[] = "hello";
-	int	c = 'w';
 
-	printf("ft_strrchr: %s\n", ft_strrchr(string, c));
-	printf("strrchr: %s\n", strrchr(string, c));
+	printf("%s", ft_strmapi(string, ftoupper));
 }
 */

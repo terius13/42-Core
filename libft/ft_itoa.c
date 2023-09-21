@@ -1,41 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/15 17:27:02 by ting              #+#    #+#             */
-/*   Updated: 2023/09/21 19:34:26 by ting             ###   ########.fr       */
+/*   Created: 2023/09/20 20:45:11 by ting              #+#    #+#             */
+/*   Updated: 2023/09/21 19:33:41 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_itoa(int n)
 {
-	char	*string;
-	char	cc;
-	int		i;
+	char	*str;
 
-	string = (char *) s;
-	cc = (char) c;
-	i = ft_strlen(string);
-	while (i >= 0)
+	str = (char *)malloc(sizeof(char) * 2);
+	if (!str)
+		return (NULL);
+	if (n < 0)
 	{
-		if (string[i] == cc)
-			return (&string[i]);
-		i--;
+		str[0] = '-';
+		str[1] = '\0';
+		str = ft_strjoin(str, ft_itoa(-n));
 	}
-	return (NULL);
+	else if (n > 9)
+		str = ft_strjoin(ft_itoa(n / 10), ft_itoa(n % 10));
+	else if (n < 10 && n >= 0)
+	{
+		str[0] = n + '0';
+		str[1] = '\0';
+	}
+	return (str);
 }
 /*
 int	main(void)
 {
-	char	string[] = "hello";
-	int	c = 'w';
-
-	printf("ft_strrchr: %s\n", ft_strrchr(string, c));
-	printf("strrchr: %s\n", strrchr(string, c));
+	int	num = -123;
+	printf("%s", ft_itoa(num));
 }
 */

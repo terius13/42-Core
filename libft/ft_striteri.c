@@ -1,41 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/15 17:27:02 by ting              #+#    #+#             */
-/*   Updated: 2023/09/21 19:34:26 by ting             ###   ########.fr       */
+/*   Created: 2023/09/20 20:04:35 by ting              #+#    #+#             */
+/*   Updated: 2023/09/20 20:34:24 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	char	*string;
-	char	cc;
-	int		i;
+	unsigned int	i;
 
-	string = (char *) s;
-	cc = (char) c;
-	i = ft_strlen(string);
-	while (i >= 0)
+	i = 0;
+	while (s[i] != '\0')
 	{
-		if (string[i] == cc)
-			return (&string[i]);
-		i--;
+		f(i, s + i);
+		i++;
 	}
-	return (NULL);
 }
 /*
+void     ftoupper(unsigned int i, char *c)
+{
+	i = 0;
+        while ((c[i] >= 97 && c[i] <= 122) && c[i] != '\0')
+	{
+                c[i] = c[i] - 32;
+		i++;
+	}
+}
 int	main(void)
 {
 	char	string[] = "hello";
-	int	c = 'w';
-
-	printf("ft_strrchr: %s\n", ft_strrchr(string, c));
-	printf("strrchr: %s\n", strrchr(string, c));
+	ft_striteri(string, ftoupper);
+	printf("%s", string);
 }
 */
