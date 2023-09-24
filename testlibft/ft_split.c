@@ -6,20 +6,20 @@
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 18:17:38 by ting              #+#    #+#             */
-/*   Updated: 2023/09/21 19:30:58 by ting             ###   ########.fr       */
+/*   Updated: 2023/09/23 15:43:12 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_freeup(char *strs)
+static void	ft_freeup(char **strs)
 {
 	int	i;
 
 	i = 0;
-	while (strs[i] != '\0')
+	while (strs)
 	{
-		free(strs);
+		free(strs[i]);
 		i++;
 	}
 	free(strs);
@@ -66,7 +66,9 @@ static char	*ft_stralloc(char *str, char c, int *k)
 {
 	char	*word;
 	int		j;
+	int		i;
 
+	i = 0;
 	j = *k;
 	word = NULL;
 	while (str[*k] != '\0')
@@ -74,8 +76,11 @@ static char	*ft_stralloc(char *str, char c, int *k)
 		if (str[*k] != c)
 		{
 			while (str[*k] != '\0' && str[*k] != c)
+			{
 				*k += 1;
-			word = (char *)malloc(sizeof(char) * (*k + 1));
+				i++;
+			}
+			word = (char *)malloc(sizeof(char) * (i + 1));
 			if (word == NULL)
 				return (NULL);
 			break ;
@@ -107,23 +112,23 @@ char	**ft_split(char const *str, char c)
 		strs[i] = ft_stralloc(((char *)str), c, &pos);
 		if (strs[i] == NULL)
 		{
-			ft_freeup(strs[i]);
+			ft_freeup(strs);
+			break;
 		}
 		i++;
 	}
 	return (strs);
 }
-/*
-int	main(void)
-{
-	char	str[] = "chicken,coffee,tea,tree,bagels";
-	char	c = ',';
-	char	**result = ft_split(str, c);
-	int i = 0;
-	while (result[i] != NULL)
-	{
-		printf("%s\n", result[i]);
-		i++;
-	}
-}
-*/
+
+//int	main(void)
+//{
+//	char	str[] = "hello!";
+//	char	c = ' ';
+//	char	**result = ft_split(str, c);
+//	int i = 0;
+//	while (result[i] != NULL)
+//	{
+//		printf("%s\n", result[i]);
+//		i++;
+//	}
+//}

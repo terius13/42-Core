@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/18 20:10:30 by ting              #+#    #+#             */
-/*   Updated: 2023/09/22 22:01:06 by ting             ###   ########.fr       */
+/*   Created: 2023/09/22 19:51:31 by ting              #+#    #+#             */
+/*   Updated: 2023/09/22 21:01:37 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char	const *s, unsigned int start, size_t len)
+t_list	*ft_lstnew(void *content)
 {
-	char	*dest;
-	char	*str;
-
-	str = (char *) s;
-	if (start >= ft_strlen(str))
-		return (ft_calloc(1, 1));
-	if (len > ft_strlen(str) - start)
-		len = ft_strlen(s) - start;
-	dest = (char *)malloc(len + 1);
-	if (str == NULL || dest == NULL)
+	t_list	*new;
+	
+	new = (t_list *)malloc(sizeof(t_list));
+	if (!new)
 		return (NULL);
-	ft_strlcpy(dest, str + start, len + 1);
-	return (dest);
+	(*new).content = content;
+	(*new).next = NULL;
+	return (new);
 }
 /*
 int	main(void)
 {
-	char	string[] = "hello i am bye";
-	int	start = 3;
-	size_t	len = 5;
+	t_list	*sample = ft_lstnew("Hello World");
 
-	printf("%s", ft_substr(string, start, len));
+	if (sample)
+	{
+		printf("%s\n", (char *)sample->content);
+		free(sample);
+	}
+	else
+		printf("Error occured\n");
+	return (1);
 }
 */
