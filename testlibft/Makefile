@@ -6,7 +6,7 @@
 #    By: ting <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/16 17:33:51 by ting              #+#    #+#              #
-#    Updated: 2023/09/21 19:26:41 by ting             ###   ########.fr        #
+#    Updated: 2023/09/25 13:38:16 by ting             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRC = ft_atoi.c ft_isalpha.c \
       ft_putnbr_fd.c ft_substr.c \
       ft_strjoin.c ft_strtrim.c \
       ft_strmapi.c ft_striteri.c \
-      ft_split.c
+      ft_split.c ft_lstiter_bonus.c \
 
 CC = clang
 
