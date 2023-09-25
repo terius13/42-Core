@@ -6,7 +6,7 @@
 #    By: ting <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/16 17:33:51 by ting              #+#    #+#              #
-#    Updated: 2023/09/25 14:28:53 by ting             ###   ########.fr        #
+#    Updated: 2023/09/25 19:23:31 by ting             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,13 +52,12 @@ $(NAME):
 	$(CC) $(FLAGS) -c $(SRC)
 	ar rc $(NAME) $(OBJ)
 
-bonus: $(NAME)
+bonus:  $(NAME)
 	$(CC) $(FLAGS) -c $(BNS_SRC)
 	ar rc $(NAME) $(BNS_OBJ)
 
 clean:
-	rm -rf $(OBJ)
-	rm -rf $(BNS_OBJ)
+	rm -rf $(OBJ) $(BNS_OBJ)
 
 fclean: clean
 	rm -f $(NAME)

@@ -6,7 +6,7 @@
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 15:25:29 by ting              #+#    #+#             */
-/*   Updated: 2023/09/24 15:53:53 by ting             ###   ########.fr       */
+/*   Updated: 2023/09/25 19:33:15 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	if (!*lst)
 	{
 		*lst = new;
-		return;
+		return ;
 	}
 	while (current->next)
 	{

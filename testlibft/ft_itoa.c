@@ -6,7 +6,7 @@
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 20:45:11 by ting              #+#    #+#             */
-/*   Updated: 2023/09/23 00:21:05 by ting             ###   ########.fr       */
+/*   Updated: 2023/09/25 19:32:31 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	countlp(int num)
 char	*ft_itoa(int n)
 {
 	char	*str;
-	int	counter;
-	int	nbr;
+	int		counter;
+	int		nbr;
 
 	counter = countlp(n);
 	if (n == -2147483648)

@@ -6,23 +6,24 @@
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 18:17:38 by ting              #+#    #+#             */
-/*   Updated: 2023/09/23 15:43:12 by ting             ###   ########.fr       */
+/*   Updated: 2023/09/25 19:49:16 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_freeup(char **strs)
+static void	*ft_freeup(char **strs)
 {
 	int	i;
 
 	i = 0;
-	while (strs)
+	while (strs[i])
 	{
 		free(strs[i]);
 		i++;
 	}
 	free(strs);
+	return (NULL);
 }
 
 static int	ft_wordcount(char *str, char c)
@@ -113,7 +114,7 @@ char	**ft_split(char const *str, char c)
 		if (strs[i] == NULL)
 		{
 			ft_freeup(strs);
-			break;
+			return (NULL);
 		}
 		i++;
 	}
