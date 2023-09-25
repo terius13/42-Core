@@ -6,7 +6,7 @@
 #    By: ting <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/16 17:33:51 by ting              #+#    #+#              #
-#    Updated: 2023/09/21 19:26:41 by ting             ###   ########.fr        #
+#    Updated: 2023/09/24 16:34:26 by ting             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,12 @@ SRC = ft_atoi.c ft_isalpha.c \
       ft_putnbr_fd.c ft_substr.c \
       ft_strjoin.c ft_strtrim.c \
       ft_strmapi.c ft_striteri.c \
-      ft_split.c
+      ft_split.c ft_itoa.c \
+
+BNS_SRC = ft_lstnew_bonus.c ft_lstadd_front_bonus.c \
+	  ft_lstsize_bonus.c ft_lstlast_bonus.c \
+	  ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
+	  ft_lstclear_bonus.c
 
 CC = clang
 
@@ -38,14 +43,21 @@ HEADER = libft.h
 
 OBJ = $(SRC:.c=.o)
 
+BNS_OBJ = $(BNS_SRC:.c=.o)
+
 all: $(NAME)
 
 $(NAME):
 	$(CC) $(FLAGS) -c $(SRC)
 	ar rc $(NAME) $(OBJ)
 
+bonus: $(NAME)
+	$(CC) $(FLAGS) -c $(BNS_SRC)
+	ar rc $(NAME) $(BNS_OBJ)
+
 clean:
 	rm -rf $(OBJ)
+	rm -rf $(BNS_OBJ)
 
 fclean: clean
 	rm -f $(NAME)

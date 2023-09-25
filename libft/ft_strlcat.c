@@ -6,7 +6,7 @@
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 18:10:00 by ting              #+#    #+#             */
-/*   Updated: 2023/09/17 13:26:19 by ting             ###   ########.fr       */
+/*   Updated: 2023/09/23 16:05:26 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,14 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 #include <string.h>
 int	main(void)
 {
-	char	string[] = "hello";
-	char	dest[] = "bye";
-	size_t	size = 10;
+	char	string[] = "testing";
+	char	dest[] = "123";
+	size_t	i;
 
-	printf("%zu", ft_strlcat(dest, string, size));
+	i = ft_strlcat(dest, string, 11);
+	printf("%zu\n", i);
+	printf("%s\n", dest);
+	printf("%ld\n", ft_strlen(dest));
+//	printf("%zu", ft_strlcat(dest, string, size));
 }
 */

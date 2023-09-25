@@ -6,38 +6,63 @@
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 20:45:11 by ting              #+#    #+#             */
-/*   Updated: 2023/09/21 19:33:41 by ting             ###   ########.fr       */
+/*   Updated: 2023/09/23 00:21:05 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+int	countlp(int num)
+{
+	int	count;
+
+	count = 0;
+	if (num < 0)
+	{
+		count++;
+		num = -num;
+	}
+	while (num > 9)
+	{
+		num = num / 10;
+		count++;
+	}
+	count++;
+	return (count);
+}
+
 char	*ft_itoa(int n)
 {
 	char	*str;
+	int	counter;
+	int	nbr;
 
-	str = (char *)malloc(sizeof(char) * 2);
+	counter = countlp(n);
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	str = (char *)malloc((sizeof(char) * counter) + 1);
 	if (!str)
 		return (NULL);
+	nbr = n;
 	if (n < 0)
 	{
-		str[0] = '-';
-		str[1] = '\0';
-		str = ft_strjoin(str, ft_itoa(-n));
+		n = -n;
 	}
-	else if (n > 9)
-		str = ft_strjoin(ft_itoa(n / 10), ft_itoa(n % 10));
-	else if (n < 10 && n >= 0)
+	str[counter] = '\0';
+	while (counter--)
 	{
-		str[0] = n + '0';
-		str[1] = '\0';
+		str[counter] = n % 10 + '0';
+		n = n / 10;
 	}
+	if (nbr < 0)
+		str[0] = '-';
 	return (str);
 }
 /*
-int	main(void)
+int	main(int argc, char **argv)
 {
-	int	num = -123;
-	printf("%s", ft_itoa(num));
+	//int	num = -100;
+	printf("%s\n", ft_itoa(ft_atoi(argv[1])));
+	printf("%d", countlp(ft_atoi(argv[1])));
 }
 */
