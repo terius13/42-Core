@@ -6,7 +6,11 @@
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 20:13:55 by ting              #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/03/23 12:35:56 by ting             ###   ########.fr       */
+=======
+/*   Updated: 2023/12/30 14:59:26 by ting             ###   ########.fr       */
+>>>>>>> f0819aff92765c390e674f6475b9b69a0c54cfc3
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +81,7 @@ int		ft_prtchar_printf(char c);
 int		ft_prtnbr_printf(int nbr);
 int		ft_prtunnbr_printf(unsigned int nbr);
 int		ft_prthex_printf(unsigned long n, char format);
+<<<<<<< HEAD
 int		ft_nb_abs(int num);
 char	*get_next_line(int fd);
 int		ft_strlen_gnl(char *str);
@@ -84,5 +89,7 @@ char	*ft_strcat_gnl(char *s1, char *s2, int size);
 char	*ft_strdup_gnl(const char *src);
 void	ft_bzero_gnl(void *s, size_t n);
 char	*ft_strchr_gnl(const char *s, int c);
+=======
+>>>>>>> f0819aff92765c390e674f6475b9b69a0c54cfc3
 
 #endif
