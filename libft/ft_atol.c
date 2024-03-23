@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_prtunnbr_printf.c                               :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ting <ting@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/20 22:41:23 by ting              #+#    #+#             */
-/*   Updated: 2023/12/30 15:03:56 by ting             ###   ########.fr       */
+/*   Created: 2024/03/02 15:47:52 by ting              #+#    #+#             */
+/*   Updated: 2024/03/07 11:33:34 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_prtunnbr_printf(unsigned int nbr)
+long	ft_atol(const char *nptr)
 {
-	int				count;
-	unsigned int	n;
+	long	neg;
+	int		i;
+	long	num;
 
-	count = 0;
-	n = nbr;
-	if (n > 9)
-		count += ft_prtunnbr_printf(n / 10);
-	n = n % 10 + '0';
-	count += ft_prtchar_printf(n);
-	return (count);
+	i = 0;
+	neg = 1;
+	num = 0;
+	while (nptr[i] == 32 || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
+	{
+		if (nptr[i] == '-')
+			neg = neg * -1;
+		i++;
+	}
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		num = num * 10 + (nptr[i] - '0');
+		i++;
+	}
+	return (num * neg);
 }

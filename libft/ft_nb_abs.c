@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_nb_abs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: ting <ting@student.42singapore.sg>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 16:23:51 by ting              #+#    #+#             */
-/*   Updated: 2023/09/25 19:35:07 by ting             ###   ########.fr       */
+/*   Created: 2024/03/08 14:26:19 by ting              #+#    #+#             */
+/*   Updated: 2024/03/08 14:27:39 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+int	ft_nb_abs(int num)
 {
-	t_list	*head;
-
-	while (*lst)
+	if (num < 0)
 	{
-		head = (**lst).next;
-		del((**lst).content);
-		free(*lst);
-		*lst = head;
+		return (num * -1);
 	}
-	*lst = NULL;
+	return (num);
 }

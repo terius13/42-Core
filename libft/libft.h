@@ -6,12 +6,15 @@
 /*   By: ting <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 20:13:55 by ting              #+#    #+#             */
-/*   Updated: 2023/12/20 23:06:57 by ting             ###   ########.fr       */
+/*   Updated: 2024/03/23 12:35:56 by ting             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# ifndef BUFFER_SIZE
+# define BUFFER_SIZE 1
+# endif
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
@@ -38,6 +41,7 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
+int		ft_strcmp(char *s1, char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
@@ -56,6 +60,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	**ft_split(char const *str, char c);
 char	*ft_itoa(int n);
+long	ft_atol(const char *nptr);
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
@@ -65,12 +70,19 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-int	ft_printf(const char *str, ...);
-int	ft_checker(va_list list, char format);
-int	ft_prtstr_printf(char *str);
-int	ft_prtchar_printf(char c);
-int	ft_prtnbr_printf(int nbr);
-int	ft_prtunnbr_printf(unsigned int nbr);
-int	ft_prthex_printf(unsigned long n, char format);
+int		ft_printf(const char *str, ...);
+int		ft_checker(va_list list, char format);
+int		ft_prtstr_printf(char *str);
+int		ft_prtchar_printf(char c);
+int		ft_prtnbr_printf(int nbr);
+int		ft_prtunnbr_printf(unsigned int nbr);
+int		ft_prthex_printf(unsigned long n, char format);
+int		ft_nb_abs(int num);
+char	*get_next_line(int fd);
+int		ft_strlen_gnl(char *str);
+char	*ft_strcat_gnl(char *s1, char *s2, int size);
+char	*ft_strdup_gnl(const char *src);
+void	ft_bzero_gnl(void *s, size_t n);
+char	*ft_strchr_gnl(const char *s, int c);
 
 #endif
